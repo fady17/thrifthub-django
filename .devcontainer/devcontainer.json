@@ -1,0 +1,28 @@
+{
+    "name": "ThriftHub Dev Container",
+    "dockerFile": "Dockerfile",
+    "postCreateCommand": "pip install -r backend/requirements.txt && npm install --prefix frontend",
+    "settings": {
+      "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "extensions": [
+      "ms-python.python",
+      "ms-azuretools.vscode-docker",
+      "dbaeumer.vscode-eslint"
+    ],
+    "forwardPorts": [3000, 8000],
+    "remoteEnv": {
+      "SECRET_KEY": "${localEnv:SECRET_KEY}",
+      "DEBUG": "True",
+      "DATABASE_URL": "${localEnv:DATABASE_URL}",
+      "ALLOWED_HOSTS": "localhost,127.0.0.1",
+      "EMAIL_HOST": "${localEnv:EMAIL_HOST}",
+      "EMAIL_PORT": "${localEnv:EMAIL_PORT}",
+      "EMAIL_HOST_USER": "${localEnv:EMAIL_HOST_USER}",
+      "EMAIL_HOST_PASSWORD": "${localEnv:EMAIL_HOST_PASSWORD}",
+      "EMAIL_USE_TLS": "True",
+      "DEFAULT_FROM_EMAIL": "${localEnv:DEFAULT_FROM_EMAIL}",
+      "REACT_APP_API_URL": "http://localhost:8000/api"
+    }
+  }
+  
